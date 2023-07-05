@@ -1,0 +1,7 @@
+ul {
+    list-style-type: none;
+    padding: 0 16px 0 16px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
