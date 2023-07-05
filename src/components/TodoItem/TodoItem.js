@@ -1,13 +1,23 @@
 import './TodoItem.css';
-import deleteIcon from '../../assets/icons/X.png';
-import checkIcon from '../../assets/icons/Check.png';
 
 function TodoItem({ text, completed }) {
     return (
-        <li>
-            <img src={checkIcon} />
-            <p>{text}</p>
-            <img src={deleteIcon} class="delete" />
+        <li className="item">
+            <span
+                className={`icon icon-check ${
+                    completed ? 'icon-check--active' : ''
+                }`}
+            >
+                V
+            </span>
+            <p
+                className={`item-p ${
+                    completed ? 'item-p--complete' : ''
+                }`}
+            >
+                {text}
+            </p>
+            <span className={`icon icon-delete`}>X</span>
         </li>
     );
 }
