@@ -31,22 +31,3 @@
     font-weight: bold;
     /* background-color: #CCC; */
 }
-
-.icon-check {
-    position: absolute;
-    left: 12px;
-}
-
-.icon-check--active {
-    color: #4caf50;
-}
-
-.icon-delete {
-    position: absolute;
-    top: -24px;
-    right: 0;
-}
-
-.icon-delete:hover {
-    color: red;
-}
