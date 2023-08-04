@@ -15,18 +15,28 @@ import { TodoCounter } from './components/TodoCounter/TodoCounter';
 //localStorage.setItem('TODOS_V1');
 // localStorage.removeItem('TODOS_V1');
 
-function App() {
-    const localStorageTodos = localStorage.getItem('TODO_V1');
-    let parsedTodos;
+function useLocalStorage(itemName, initialValue) {
+    const localStorageItem = localStorage.getItem(itemName);
+    let parsedItem;
 
-    if (!localStorageTodos) {
-        localStorage.setItem('TODOS_V1', JSON.stringify([]));
-        parsedTodos = [];
+    if (!localStorageItem) {
+        localStorage.setItem(itemName, JSON.stringify(initialValue));
+        parsedItem = initialValue;
     } else {
-        parsedTodos = JSON.parse(localStorageTodos);
+        parsedItem = JSON.parse(localStorageItem);
     }
+    const [item, setItem] = React.useState(parsedItem);
 
-    const [todos, setTodos] = React.useState(parsedTodos);
+    const saveItem = (newItem) => {
+        localStorage.setItem(itemName, JSON.stringify(newItem));
+        setItem(newItem);
+    };
+
+    return [item, saveItem];
+}
+
+function App() {
+    const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
     const [searchValue, setSearchValue] = React.useState('');
 
     const completedTodos = todos.filter(
@@ -37,11 +47,6 @@ function App() {
     const searchedTodos = todos.filter((todo) =>
         todo.text.toLowerCase().includes(searchValue.toLowerCase())
     );
-
-    const saveTodos = (newTodos) => {
-        localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-        setTodos(newTodos);
-    };
 
     const completeTodo = (text) => {
         const newTodos = [...todos];
