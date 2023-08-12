@@ -12,6 +12,8 @@ function AppUI({
     searchValue,
     setSearchValue,
     completedTodos,
+    loading,
+    error,
 }) {
     return (
         <>
@@ -23,8 +25,13 @@ function AppUI({
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
             />
-
             <TodoList>
+                {loading && <p>Estamos cargando...</p>}
+                {error && <p>Desesperate, hubo un error...</p>}
+                {!loading && searchedTodos.lenght === 0 && (
+                    <p>!Crea tu primer TODO!</p>
+                )}
+
                 {searchedTodos.map((todo) => (
                     <TodoItem
                         key={todo.text}
@@ -35,7 +42,6 @@ function AppUI({
                     />
                 ))}
             </TodoList>
-
             <CreateTodoButton />
         </>
     );

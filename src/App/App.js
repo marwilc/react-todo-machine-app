@@ -3,7 +3,12 @@ import { AppUI } from './AppUI';
 import { useLocalStorage } from './useLocalStorage';
 
 function App() {
-    const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+    const {
+        item: todos,
+        saveItem: saveTodos,
+        loading,
+        error,
+    } = useLocalStorage('TODOS_V1', []);
     const [searchValue, setSearchValue] = React.useState('');
 
     const completedTodos = todos.filter(
@@ -11,10 +16,6 @@ function App() {
     ).length;
 
     const totalTodos = todos.length;
-
-    React.useEffect(() => {
-        console.log('Log');
-    });
 
     const searchedTodos = todos.filter((todo) =>
         todo.text.toLowerCase().includes(searchValue.toLowerCase())
@@ -48,6 +49,8 @@ function App() {
             searchValue={searchValue}
             setSearchValue={setSearchValue}
             completedTodos={completedTodos}
+            loading={loading}
+            error={error}
         />
     );
 }
