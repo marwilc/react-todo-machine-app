@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-todo-machine-app/static/css/main.35bc2df1.css",
+    "main.js": "/react-todo-machine-app/static/js/main.a4557e8e.js",
+    "index.html": "/react-todo-machine-app/index.html",
+    "static/media/delete.svg": "/react-todo-machine-app/static/media/delete.d9c7e0eeb3f573572e1521b7b69ed33e.svg",
+    "static/media/check.svg": "/react-todo-machine-app/static/media/check.af03c9a6a0411e40578874e6f00e807b.svg",
+    "main.35bc2df1.css.map": "/react-todo-machine-app/static/css/main.35bc2df1.css.map",
+    "main.a4557e8e.js.map": "/react-todo-machine-app/static/js/main.a4557e8e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.35bc2df1.css",
+    "static/js/main.a4557e8e.js"
+  ]
+}
